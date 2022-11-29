@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+    <h2>Add Subscription to Substracked</h2>
+    <h3>Service: Netflix</h3>
+    <form class="simple_form new_subscription" id="new_subscription" novalidate="novalidate" accept-charset="UTF-8" method="POST"><input type="hidden" name="authenticity_token" value="desZ0VwcALpW6e_7uSclH8u87HdHQUupNaWw9lQMgwE70HuKCGWMVB7-oxOOLU-HCjBoorhLlILqb6Fs5hIw6w" autocomplete="off">
+      <div class="modal-body pb-0 border-0" ,="">
+        <div class="mb-3 select required subscription_plan"><label class="form-label select required" for="subscription_plan_id">Plan <abbr title="required">*</abbr></label>
+        <select class="form-select select required" name="subscription[plan_id]" id="subscription_plan_id">
+        </select></div>
+        <div class="mb-3 date required subscription_start_date"><label class="form-label date required" for="subscription_start_date">Start date <abbr title="required">*</abbr></label>
+          <div class="d-flex flex-row justify-content-between align-items-center"><input class="form-select mx-1 date required" style="margin-right: 0rem !important;
+  margin-left: 0rem !important;" type="date" name="subscription[start_date]" id="subscription_start_date"></div>
+        </div>
+        <div class="mb-3 date required subscription_renewal_date"><label class="form-label date required" for="subscription_renewal_date">Renewal date <abbr title="required">*</abbr></label>
+          <div class="d-flex flex-row justify-content-between align-items-center"><input class="form-select mx-1 date required" style="margin-right: 0rem !important;
+  margin-left: 0rem !important;" type="date" name="subscription[renewal_date]" id="subscription_renewal_date"></div>
+        </div>
+        <div class="mb-3 select required subscription_region"><label class="form-label select required" for="subscription_region">Region <abbr title="required">*</abbr></label><select class="form-select select required" name="subscription[region]" id="subscription_region"><option value="" label=" "></option>
+            <option value="Australia">Australia</option>
+            <option value="Brazil">Brazil</option>
+            <option value="France">France</option>
+            <option value="Germany">Germany</option>
+            <option value="Hong Kong">Hong Kong</option>
+            <option value="Italy">Italy</option>
+            <option value="Japan">Japan</option>
+            <option value="Singapore">Singapore</option>
+            <option value="United States of America">United States of America</option>
+            <option value="United Kingdom">United Kingdom</option></select></div>
+        <div class="mb-3 text optional subscription_notes"><label class="form-label text optional" for="subscription_notes">Notes</label>
+          <textarea class="form-control text optional" name="subscription[notes]" id="subscription_notes"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-between border-0">
+        <button value="Add subscription" class="btn btn-primary mx-auto" id="send-data">Add subscription</button>
+      </div>
+    </form>
+  </div>
+  </body>
+  <script type="text/javascript" src="popup.js"></script>
+</html>
