@@ -1,11 +1,11 @@
 // get service name from the website
 function fetchData(resource) {
   const select = document.getElementById('subscription_plan_id');
-  fetch("http://127.0.0.1:3000/api/v1/resources")
+  fetch("http://www.substracked.com//api/v1/resources")
   .then(response => response.json())
   .then((dataResources) => {
     let targetResourceID = dataResources.find(dataResource => dataResource.name === resource).id;
-    fetch("http://127.0.0.1:3000/api/v1/plans")
+    fetch("http://www.substracked.com//api/v1/plans")
       .then(response => response.json())
       .then((dataPlans) => {
         select.innerHTML = "";
@@ -26,10 +26,10 @@ function fetchData(resource) {
 // a button to add subs after the user filled the form
 function addSubs() {
   const button = document.getElementById('send-data');
-  const resource = "Netflix"; // to be amended
+  const resource = "Amazon Prime"; // to be amended
   fetchData(resource);
   button.addEventListener('click', (e) => {
-    const url = 'http://127.0.0.1:3000/api/v1/subscriptions';
+    const url = 'http://www.substracked.com//api/v1/subscriptions';
     const plan = document.getElementById('subscription_plan_id').value;
     const start_date = document.getElementById("subscription_start_date").value;
     const renewal_date = document.getElementById("subscription_renewal_date").value;
