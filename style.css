@@ -14,8 +14,9 @@ body {
 .pop-up-container {
   min-width: 350px;
   position: relative;
-  background: #EBF2FD;
+  background: #FFFEFE;
   padding: 1rem;
+  z-index: -100;
 }
 
 .pop-up-titel {
@@ -69,4 +70,45 @@ abbr {
 
 .btn:hover {
   color: #2F80ED;
+}
+
+.circle {
+  border-radius: 50%;
+  position: absolute;
+}
+
+.circle-one {
+  width: 1200px;
+  height: 1200px;
+  z-index: -40;
+  top: -600px;
+  right: -600px;
+  background: #EBF2FD;
+}
+
+.circle-two {
+  width: 900px;
+  height: 900px;
+  z-index: -30;
+  top: -450px;
+  right: -450px;
+  background: #D9E6FB;
+}
+
+.circle-three {
+  width: 600px;
+  height: 600px;
+  z-index: -20;
+  top: -300px;
+  right: -300px;
+  background: #C8DDF9;
+}
+
+.circle-four {
+  width: 300px;
+  height: 300px;
+  z-index: -10;
+  top: -150px;
+  right: -150px;
+  background: #B8D4F9;
 }
