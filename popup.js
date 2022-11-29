@@ -1,5 +1,15 @@
-// get service name from the website
+// get service name from the website(url)
+
+function getURL() {
+  chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+    return tabs[0].url;
+  });
+}
+
+
 function fetchData(resource) {
+  const url = getURL();
+  console.log(url);
   const select = document.getElementById('subscription_plan_id');
   fetch("http://127.0.0.1:3000/api/v1/resources")
   .then(response => response.json())
