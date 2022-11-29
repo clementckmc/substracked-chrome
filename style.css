@@ -1,5 +1,30 @@
+:root {
+  --primary: #2F80ED;
+  --dark: #222222;
+}
+
+body {
+  color: var(--dark);
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.pop-up-container {
+  min-width: 350px;
+  position: relative;
+  background: #EBF2FD;
+  padding: 1rem;
+}
+
+.pop-up-titel {
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  text-align: right;
+}
+
 .form-select, .form-control {
-  padding: 12px;
   border: none;
   font-size: 16px;
   outline: 0.5px solid #9F9F9F;
