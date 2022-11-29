@@ -16,7 +16,11 @@ body {
   position: relative;
   background: #FFFEFE;
   padding: 1rem;
-  z-index: -100;
+}
+
+.pop-up-content {
+  z-index: 50;
+  position: relative;
 }
 
 .pop-up-titel {
@@ -80,7 +84,7 @@ abbr {
 .circle-one {
   width: 1200px;
   height: 1200px;
-  z-index: -40;
+  z-index: 10;
   top: -600px;
   right: -600px;
   background: #EBF2FD;
@@ -89,7 +93,7 @@ abbr {
 .circle-two {
   width: 900px;
   height: 900px;
-  z-index: -30;
+  z-index: 20;
   top: -450px;
   right: -450px;
   background: #D9E6FB;
@@ -98,7 +102,7 @@ abbr {
 .circle-three {
   width: 600px;
   height: 600px;
-  z-index: -20;
+  z-index: 30;
   top: -300px;
   right: -300px;
   background: #C8DDF9;
@@ -107,7 +111,7 @@ abbr {
 .circle-four {
   width: 300px;
   height: 300px;
-  z-index: -10;
+  z-index: 40;
   top: -150px;
   right: -150px;
   background: #B8D4F9;
