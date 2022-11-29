@@ -26,9 +26,9 @@ function fetchData(resource) {
 // a button to add subs after the user filled the form
 function addSubs() {
   const button = document.getElementById('send-data');
-  fetchData("Netflix");
+  const resource = "Netflix"; // to be amended
+  fetchData(resource);
   button.addEventListener('click', (e) => {
-    e.preventDefault();
     const url = 'http://127.0.0.1:3000/api/v1/subscriptions';
     const plan = document.getElementById('subscription_plan_id').value;
     const start_date = document.getElementById("subscription_start_date").value;
@@ -47,10 +47,7 @@ function addSubs() {
         }
       })
     })
-
+    alert(`${resource} subscription added!`);
   })
 }
-
-// eyJhbGciOiJub25lIn0.eyJkYXRhIjoidGVzdDEyMyJ9
-
 addSubs();
