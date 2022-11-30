@@ -11,5 +11,13 @@
   ],
   "browser_action": {
     "default_popup": "popup.html"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.amazon.co.jp/-/en/gp/primecentral"
+      ],
+      "js": ["scripts/scrape-amazon.js"]
+    }
+  ]
 }

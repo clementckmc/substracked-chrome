@@ -1,3 +1,18 @@
+function sendScrapeMsg() {
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) { // Finds tabs that are active in the current window
+   console.log(tabs)
+    chrome.tabs.sendMessage(tabs[0].id, { action: 'scrapeamazon' }, (data) => {
+      console.log(data)
+      const select = document.getElementById('subscription_plan_id');
+      const option = Array.from(select.children).find(option => option.innerText.includes(data.plan))
+      select.value = option.value
+      const renewalInput = document.getElementById('subscription_renewal_date')
+      const tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+      renewalInput.value = new Date(new Date(data.endDate) - tzoffset).toISOString().split('T')[0]
+    }); // Sends a message (object) to the first tab (tabs[0])
+  });
+}
+
 // get service name from the website
 function getTitle() {
   return new Promise((resolve, reject) => {
@@ -52,6 +67,7 @@ function fetchData(resource) {
           });
         }
         select.insertAdjacentHTML("beforeend", selectOptions);
+        sendScrapeMsg()
 })
 
   })}
