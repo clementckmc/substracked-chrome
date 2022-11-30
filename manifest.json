@@ -15,7 +15,9 @@
   "content_scripts": [
     {
       "matches": [
-        "https://www.amazon.co.jp/-/en/gp/primecentral"
+        "https://www.amazon.co.jp/-/en/gp/primecentral",
+        "https://www.amazon.co.jp/gp/primecentral",
+        "https://www.amazon.co.jp/gp/primecentral?language=en&ref_=nav_AccountFlyout_prime"
       ],
       "js": ["scripts/scrape-amazon.js"]
     }
