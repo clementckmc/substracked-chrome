@@ -83,7 +83,7 @@ async function addSubs() {
         }
       })
     })
-    alert(`${resource} subscription added!`);
+    alert(`${resource.name} subscription added!`);
   })
 }
 addSubs();
