@@ -1,4 +1,37 @@
 // get service name from the website
+function getTitle() {
+  return new Promise((resolve, reject) => {
+    try {
+      chrome.tabs.query({active:true, currentWindow:true}, function(tabs) {
+        resolve(tabs[0].title);
+      })
+        } catch(e) {
+        reject(e);
+      }
+    })
+  }
+
+function getResource(title) {
+  const titleLower = title.toLowerCase();
+  return new Promise((resolve, reject) => {
+    try {
+      fetch("http://www.substracked.com//api/v1/resources")
+      .then(response => response.json())
+      .then((data) => {
+        const preResources = data.filter(service => service.user_id === null);
+        console.log(preResources);
+        let resource = preResources.find(service => titleLower.includes(service.name.toLowerCase()));
+        if (title.includes("Amazon")) {
+          resource = preResources.find(service => service.name === "Amazon Prime");
+        }
+        resolve(resource);
+      })
+    } catch(e) {
+      reject(e);
+    }
+  })
+}
+
 function fetchData(resource) {
   const select = document.getElementById('subscription_plan_id');
   fetch("http://www.substracked.com//api/v1/resources")
@@ -24,9 +57,13 @@ function fetchData(resource) {
   })}
 
 // a button to add subs after the user filled the form
-function addSubs() {
+async function addSubs() {
+  let title = await getTitle();
+  console.log(title);
+  let resource = await getResource(title);
+  console.log(resource);
   const button = document.getElementById('send-data');
-  const resource = "Amazon Prime"; // to be amended
+  // const resource = "Amazon Prime"; // to be amended
   fetchData(resource);
   button.addEventListener('click', (e) => {
     const url = 'http://www.substracked.com//api/v1/subscriptions';
