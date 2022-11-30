@@ -1,11 +1,44 @@
 // get service name from the website
+function getTitle() {
+  return new Promise((resolve, reject) => {
+    try {
+      chrome.tabs.query({active:true, currentWindow:true}, function(tabs) {
+        resolve(tabs[0].title);
+      })
+        } catch(e) {
+        reject(e);
+      }
+    })
+  }
+
+function getResource(title) {
+  const titleLower = title.toLowerCase();
+  return new Promise((resolve, reject) => {
+    try {
+      fetch("http://www.substracked.com//api/v1/resources")
+      .then(response => response.json())
+      .then((data) => {
+        const preResources = data.filter(service => service.user_id === null);
+        console.log(preResources);
+        let resource = preResources.find(service => titleLower.includes(service.name.toLowerCase()));
+        if (title.includes("Amazon")) {
+          resource = preResources.find(service => service.name === "Amazon Prime");
+        }
+        resolve(resource);
+      })
+    } catch(e) {
+      reject(e);
+    }
+  })
+}
+
 function fetchData(resource) {
   const select = document.getElementById('subscription_plan_id');
-  fetch("http://www.substracked.com//api/v1/resources")
+  fetch("http://www.substracked.com/api/v1/resources")
   .then(response => response.json())
   .then((dataResources) => {
-    let targetResourceID = dataResources.find(dataResource => dataResource.name === resource).id;
-    fetch("http://www.substracked.com//api/v1/plans")
+    let targetResourceID = dataResources.find(dataResource => dataResource.name === resource.name).id;
+    fetch("http://www.substracked.com/api/v1/plans")
       .then(response => response.json())
       .then((dataPlans) => {
         select.innerHTML = "";
@@ -24,12 +57,15 @@ function fetchData(resource) {
   })}
 
 // a button to add subs after the user filled the form
-function addSubs() {
+async function addSubs() {
+  let title = await getTitle();
+  let resource = await getResource(title);
+  let subsName = document.getElementById('subsName');
+  subsName.innerHTML = resource.name;
   const button = document.getElementById('send-data');
-  const resource = "Amazon Prime"; // to be amended
   fetchData(resource);
   button.addEventListener('click', (e) => {
-    const url = 'http://www.substracked.com//api/v1/subscriptions';
+    const url = 'http://www.substracked.com/api/v1/subscriptions';
     const plan = document.getElementById('subscription_plan_id').value;
     const start_date = document.getElementById("subscription_start_date").value;
     const renewal_date = document.getElementById("subscription_renewal_date").value;
@@ -47,7 +83,7 @@ function addSubs() {
         }
       })
     })
-    alert(`${resource} subscription added!`);
+    alert(`${resource.name} subscription added!`);
   })
 }
 addSubs();
