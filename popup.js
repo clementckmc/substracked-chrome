@@ -102,3 +102,14 @@ async function addSubs() {
   })
 }
 addSubs();
+
+const logout = document.getElementById("logout");
+logout.addEventListener('mouseover', (event) => {
+  event.target.classList.remove("text-secondary");
+  event.target.classList.add("text-dark");
+})
+
+logout.addEventListener('mouseout', (event) => {
+  event.target.classList.remove("text-dark");
+  event.target.classList.add("text-secondary");
+})
