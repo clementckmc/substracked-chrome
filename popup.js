@@ -30,7 +30,7 @@ function getResource(title) {
   const titleLower = title.toLowerCase();
   return new Promise((resolve, reject) => {
     try {
-      fetch("http://www.substracked.com//api/v1/resources")
+      fetch("http://127.0.0.1:3000/api/v1/resources")
       .then(response => response.json())
       .then((data) => {
         const preResources = data.filter(service => service.user_id === null);
@@ -53,7 +53,7 @@ function fetchData(resource) {
   .then(response => response.json())
   .then((dataResources) => {
     let targetResourceID = dataResources.find(dataResource => dataResource.name === resource.name).id;
-    fetch("http://www.substracked.com/api/v1/plans")
+    fetch("http://127.0.0.1:3000/api/v1/plans")
       .then(response => response.json())
       .then((dataPlans) => {
         select.innerHTML = "";
@@ -81,7 +81,7 @@ async function addSubs() {
   const button = document.getElementById('send-data');
   fetchData(resource);
   button.addEventListener('click', (e) => {
-    const url = 'http://www.substracked.com/api/v1/subscriptions';
+    const url = 'http://127.0.0.1:3000/api/v1/subscriptions';
     const plan = document.getElementById('subscription_plan_id').value;
     const start_date = document.getElementById("subscription_start_date").value;
     const renewal_date = document.getElementById("subscription_renewal_date").value;
