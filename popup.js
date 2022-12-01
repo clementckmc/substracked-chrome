@@ -83,7 +83,7 @@ async function addSubs() {
   button.addEventListener('click', (e) => {
     const url = 'http://www.substracked.com/api/v1/subscriptions';
     const plan = document.getElementById('subscription_plan_id').value;
-    const start_date = document.getElementById("subscription_start_date").value;
+    // const start_date = document.getElementById("subscription_start_date").value;
     const renewal_date = document.getElementById("subscription_renewal_date").value;
     const region = document.getElementById("subscription_region").value;
     const notes = document.getElementById("subscription_notes").value;
@@ -92,7 +92,6 @@ async function addSubs() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({"subscription": {
         "plan_id": plan,
-        "start_date": start_date,
         "renewal_date": renewal_date,
         "region": region,
         "notes": notes
